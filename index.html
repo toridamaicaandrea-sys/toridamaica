@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Maica Andrea Torida | Home</title>
+<meta name="description" content="Portfolio of Maica Andrea Torida, an CS student who builds clear, friendly websites.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Karla:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#home"><img src="image1.png" alt="" width="42" height="42">Maica Andrea Torida</a>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#contact">Contacts</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+ 
+  <section id="home">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="status">Welcome!</p>
+          <h1>Hi, I'm Maica. </h1>
+          <p class="lead">I'm a third-year CS student who designs and codes small websites.</p>
+          <p class="actions">
+            <a class="button" href="#about">About me</a>
+            <a class="button secondary" href="#contact">Contact me</a>
+          </p>
+        </div>
+        <figure class="portrait">
+          <img src="image.jfif" width="800" height="800" alt="Illustration of a smiling person with glasses sitting behind a laptop">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="page-head">
+      <div class="wrap">
+        <h1 class="page-title">About me.</h1>
+      </div>
+    </div>
+
+    <div class="wrap split">
+      <div>
+        <p class="lead">I'm Maica, a third-year Computer Science student.</p>
+        <p>I started with a school project that needed a simple website. What I enjoy everytime I create a website is designing because I love the process of creating something visually appealing and user-friendly.</p>
+      <figure>
+        <img src="Screenshot (1).png" width="900" height="700" alt="Illustration of a desk with a monitor showing code, a plant, a mug and a lamp">
+        <figcaption>My example work.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+ 
+  <section id="contact">
+    <div class="page-head">
+      <div class="wrap">
+        <h1 class="page-title">Contact me.</h1>
+        <p class="lead">Send me a message or reach me through the details below.</p>
+      </div>
+    </div>
+
+    <div class="wrap contact-grid">
+      
+      <form action="mailto:toridamaicaandrea@gmail.com" method="post" enctype="text/plain">
+        <div>
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="button" type="submit">Send message</button>
+      </form>
+
+      <div>
+       
+        <dl class="details">
+          <dt>Email</dt><dd><a href="mailto:toridamaicaandrea@gmail.com">toridamaicaandrea@gmail.com</a></dd>
+          <dt>GitHub</dt><dd><a href="https://github.com/toridamaicaandrea-sys">github.com/toridamaicaandrea-sys</a></dd>
+        </dl>
+        
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>&copy; 2026 Maica. Built with HTML and CSS.</p>
+    <ul class="footer-nav">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#contact">Contacts</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+
+(function () {
+  var pages = ["home", "about", "contact"];
+  var titles = {
+    home: "Maica | Home",
+    about: "About Me | Maica",
+    contact: "Contacts | Maica"
+  };
+  var current = "home";
+
+  function show() {
+    var id = location.hash.replace("#", "");
+    var keepScroll = false;
+
+    if (id === "main") { id = current; keepScroll = true; }   
+    if (pages.indexOf(id) === -1) { id = "home"; }
+    current = id;
+
+    pages.forEach(function (p) {
+      document.getElementById(p).hidden = (p !== id);
+    });
+
+    document.querySelectorAll(".nav-list a").forEach(function (a) {
+      if (a.getAttribute("href") === "#" + id) {
+        a.setAttribute("aria-current", "page");
+      } else {
+        a.removeAttribute("aria-current");
+      }
+    });
+
+    document.title = titles[id];
+    if (!keepScroll) { window.scrollTo(0, 0); }
+  }
+
+  window.addEventListener("hashchange", show);
+  show();
+})();
+</script>
+</body>
+</html>
